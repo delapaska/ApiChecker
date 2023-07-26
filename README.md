@@ -14,7 +14,8 @@
 
 Далее идёт пример запуска утилиты в DOCKER.
 docker build -t performance-test .
-docker run --name performance-test-container performance-test
+docker run -it --init --name performance-test-container performance-test
+(-it --init прописано, так как я столкнулся с проблемой, что после запуска утилиты в контейнере перестаёт работать остановка на ctrl+C, -it --init решает эту проблему)
 
 Для получения необходимо JSON файла вводится
 docker cp performance-test-container:/app/test_results.json .
